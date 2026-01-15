@@ -1,0 +1,461 @@
+/* Global Styles */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FDFCF0;
+    /* Warm paper color */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+.nav-btn,
+.session-badge {
+    font-family: 'Jua', sans-serif;
+    /* Cute header font */
+}
+
+/* Header & Nav */
+.ai-header {
+    background: #FFD54F;
+    /* Bright Yellow */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #FFC107;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-area {
+    margin-bottom: 20px;
+    color: #5D4037;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.big-icon {
+    font-size: 2.5rem;
+    color: #FFF;
+    background: #FF6F00;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.ai-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.ai-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: #FFF;
+    border: 3px solid #FFC107;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #5D4037;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: #FFECB3;
+    transform: translateY(-3px);
+}
+
+.nav-btn.active {
+    background: #FF6F00;
+    /* Active Orange */
+    color: #FFF;
+    border-color: #FF6F00;
+}
+
+/* Main Content Area */
+#main-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content-section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    color: #5D4037;
+    border-left: 5px solid #FF6F00;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* 1. Intro Section */
+.intro-card {
+    background: #FFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.intro-card h2 {
+    border: none;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.feature-item {
+    flex: 1;
+    min-width: 200px;
+    background: #E3F2FD;
+    /* Light Blue */
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #BBDEFB;
+}
+
+.feature-item i {
+    font-size: 3rem;
+    color: #1E88E5;
+    margin-bottom: 10px;
+}
+
+/* 2. Curriculum Section */
+.timeline {
+    display: grid;
+    gap: 20px;
+}
+
+.session-card {
+    background: #FFF;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 2px solid #E0E0E0;
+}
+
+.session-badge {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: #8BC34A;
+    /* Green */
+    color: #FFF;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.session-card h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #33691E;
+}
+
+/* 3. AI Tools Section */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    background: #FFF;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #EEE;
+    transition: transform 0.2s;
+}
+
+.tool-card:hover {
+    transform: scale(1.03);
+    border-color: #29B6F6;
+}
+
+.tool-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.tool-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: #29B6F6;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* 4. My Library Section */
+.library-container {
+    background: #FFF;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.input-area {
+    background: #FFF8E1;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.input-area input,
+.input-area textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 2px solid #FFD54F;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.action-btn {
+    background: #FF6F00;
+    color: #FFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: 'Jua', sans-serif;
+    width: 100%;
+}
+
+.action-btn:hover {
+    background: #E65100;
+}
+
+.log-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.log-item {
+    background: #F1F8E9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #8BC34A;
+}
+
+.log-date {
+    font-size: 0.8rem;
+    color: #757575;
+}
+
+.log-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #33691E;
+}
+
+/* 5. Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    background: #FFF;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img-placeholder {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-img-placeholder i {
+    font-size: 4rem;
+    color: #FFF;
+    opacity: 0.7;
+}
+
+.gallery-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.gallery-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.gallery-info span {
+    color: #757575;
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* Bookmatch Grid */
+.bookmatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.bm-item {
+    background: #FFF3E0;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #FFE0B2;
+}
+
+.bm-letter {
+    font-family: 'Jua', sans-serif;
+    font-size: 2rem;
+    color: #FF6F00;
+    background: #FFF;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #fecb7e;
+    flex-shrink: 0;
+}
+
+.bm-desc {
+    font-size: 1rem;
+    color: #5D4037;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    background: #F0F0F0;
+    margin-top: 60px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .ai-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .big-icon {
+        font-size: 1.8rem;
+    }
+
+    .modal-content {
+        width: 85%;
+        margin: 20% auto;
+    }
+}

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학교도서관에서 사서쌤과 함께하는 나만의 독서 여행</title>
+    <!-- Google Fonts for Elementary Friendly Vibe -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jua&family=Gamja+Flower&family=Noto+Sans+KR:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Import main style for consistency if needed, but we will use ai_style.css primarily -->
+    <link rel="stylesheet" href="ai_style.css">
+</head>
+
+<body>
+
+    <header class="ai-header">
+        <div class="logo-area">
+            <i class="fa-solid fa-robot big-icon"></i>
+            <h1>사서쌤과 함께하는 독서 탐험대 🚀</h1>
+        </div>
+        <nav class="ai-nav">
+            <button class="nav-btn active" onclick="showSection('intro')"><i class="fa-solid fa-info-circle"></i> 프로그램
+                소개</button>
+            <button class="nav-btn" onclick="showSection('curriculum')"><i class="fa-solid fa-list-check"></i> 8차시
+                활동</button>
+            <button class="nav-btn" onclick="showSection('tools')"><i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                도구함</button>
+            <button class="nav-btn" onclick="showSection('mylibrary')"><i class="fa-solid fa-book"></i> 나의 서재</button>
+            <button class="nav-btn" onclick="showSection('kdc_recommend')"><i class="fa-solid fa-list-ol"></i> KDC별
+                추천도서</button>
+            <button class="nav-btn" onclick="showSection('gallery')"><i class="fa-solid fa-images"></i> 작품 전시회</button>
+            <button class="nav-btn" onclick="showSection('consultant')"><i class="fa-solid fa-magic"></i> AI
+                추천사서</button>
+            <button class="nav-btn" id="userStatusBtn" onclick="handleUserClick()"
+                style="border-color:#4CAF50; color:#2E7D32;">
+                <i class="fa-solid fa-user"></i> <span id="currentUserDisplay">로그인</span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Section 1: Intro -->
+        <section id="intro" class="content-section active">
+            <div class="intro-card">
+                <h2>🤖 인공지능과 친구가 되어 책을 읽어봐요!</h2>
+                <p>내가 좋아하는 책을 스스로 고르고, 인공지능(AI) 친구들의 도움을 받아 더 재미있게 읽는 프로그램입니다.</p>
+                <div class="features">
+                    <div class="feature-item" onclick="openBookmatch()" style="cursor: pointer;">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        <h3>직접 선택</h3>
+                        <p>내가 읽고 싶은 책을<br>직접 골라요.</p>
+                        <span style="font-size:0.8rem; color:#1E88E5;">(클릭해서 기준 보기)</span>
+                    </div>
+                    <div class="feature-item" onclick="openAIEthicsModal()" style="cursor: pointer;">
+                        <i class="fa-solid fa-comments"></i>
+                        <h3>AI와 대화</h3>
+                        <p>궁금한 내용을<br>AI에게 물어봐요.</p>
+                        <span style="font-size:0.8rem; color:#1E88E5;">(클릭해서 AI 윤리 보기)</span>
+                    </div>
+                    <div class="feature-item" onclick="openDrawingModal()" style="cursor: pointer;">
+                        <i class="fa-solid fa-palette"></i>
+                        <h3>창작 활동</h3>
+                        <p>자유롭게<br>떠오르는 생각을 표현해요</p>
+                        <span style="font-size:0.8rem; color:#1E88E5;">(클릭해서 그림 그리기)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Curriculum (8 Sessions) -->
+        <section id="curriculum" class="content-section" style="display:none;">
+            <h2>📅 8차시 활동 안내</h2>
+            <div class="timeline">
+                <div class="session-card">
+                    <div class="session-badge">1차시</div>
+                    <h3>👋 읽어야 하는 책에서 벗어나기!</h3>
+                    <p><span onclick="openPadlet()"
+                            style="color:#FFA000; cursor:pointer; text-decoration:underline; font-weight:bold;">독서 경험
+                            나누기</span>/<span onclick="openSelfSelectionModal()"
+                            style="color:#1E88E5; cursor:pointer; text-decoration:underline; font-weight:bold;">자기 선택적
+                            독서</span> 알아보기</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">2차시</div>
+                    <h3>📚 나는 어떤 독자일까?</h3>
+                    <p><span onclick="openProfileCardModal()"
+                            style="color:#1E88E5; cursor:pointer; text-decoration:underline; font-weight:bold;">독서 성향 카드
+                            작성</span>/<span onclick="openAttitudeTestModal()"
+                            style="color:#1E88E5; cursor:pointer; text-decoration:underline; font-weight:bold;">독서 태도
+                            검사</span></p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">3차시</div>
+                    <h3>🔍 도서목록, 이렇게 볼 수 있어요!</h3>
+                    <p>사서쌤이 추천하는 KDC별 주제 도서 목록 살펴보기</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">4차시</div>
+                    <h3>🎨 책을 고르는 나만의 기준 만들기</h3>
+                    <p>Bookmatch를 활용해서 나만의 책 고르는 기준 만들기</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">5차시</div>
+                    <h3>✍️ AI를 활용해서 도서목록에서 책 찾아보기</h3>
+                    <p>프롬프트 만들기 연습/마음에 드는 책 3권 추천 받기</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">6차시</div>
+                    <h3>🎭 실제로 3권의 책을 도서관에서 찾아보자!</h3>
+                    <p>3권의 책을 실제로 각각 5분씩 읽어보고 마음에 드는 책 1권 선택하기</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">7차시</div>
+                    <h3>💌 나의 독서 선택은 계속 된다!</h3>
+                    <p>독서 중 선택 조정 겸험/계속 읽기 또는 도서 변경/변경 이유 성찰/선택 변화 자율적 공유</p>
+                </div>
+                <div class="session-card">
+                    <div class="session-badge">8차시</div>
+                    <h3>🏆 자기 선택적 독서 프로그램 돌아보기</h3>
+                    <p>책을 고르는 처음 기준과 마지막 기준 비교하기/독서 태도 검사/프로그램 경험 소감나누기</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: AI Tools -->
+        <section id="tools" class="content-section" style="display:none;">
+            <h2>🛠️ 슬기로운 AI 도구함</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">💬</div>
+                    <h3>뤼튼 (Wrtn)</h3>
+                    <p>한국어를 아주 잘하는 AI 채팅 친구예요. 글쓰기를 도와줘요.</p>
+                    <a href="https://wrtn.ai" target="_blank" class="tool-link">이동하기</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🎨</div>
+                    <h3>투닝 (Tooning)</h3>
+                    <p>웹툰을 쉽게 만들 수 있는 AI 도구예요. 이야기를 그림으로!</p>
+                    <a href="https://tooning.io" target="_blank" class="tool-link">이동하기</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🎵</div>
+                    <h3>Suno AI</h3>
+                    <p>책의 분위기에 딱 맞는 노래를 만들어볼까요?</p>
+                    <a href="https://suno.com" target="_blank" class="tool-link">이동하기</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3>질문 마법사</h3>
+                    <p>어떻게 질문해야 할지 모르겠다면? 프롬프트 팁!</p>
+                    <button class="tool-link" onclick="alert('준비 중인 기능입니다! 선생님께 물어보세요.')">팁 보기</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: My Library -->
+        <section id="mylibrary" class="content-section" style="display:none;">
+            <h2>📖 나의 서재</h2>
+            <div class="library-container">
+                <div class="input-area">
+                    <h3>오늘 읽은 책 기록하기</h3>
+                    <div style="display:flex; gap:10px; margin-bottom:10px;">
+                        <input type="text" id="kdcInput" placeholder="KDC 번호 (예: 800)" style="flex:1;">
+                        <input type="text" id="bookInput" placeholder="책 제목을 입력하세요" style="flex:3;">
+                    </div>
+                    <textarea id="thoughtInput" placeholder="재미있었던 점이나 AI와 한 활동을 짧게 남겨주세요." rows="3"></textarea>
+                    <button onclick="addBookLog()" class="action-btn">기록 저장하기 ✨</button>
+                </div>
+                <div class="log-list">
+                    <h3>📜 독서 기록장</h3>
+                    <ul id="bookLogList">
+                        <!-- JS will populate this -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Gallery -->
+        <section id="gallery" class="content-section" style="display:none;">
+            <h2>🖼️ 작품 전시회</h2>
+            <p>친구들이 만든 멋진 작품들을 감상해요.</p>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Sample Items -->
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder" style="background-color: #FFD1DC;">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>아몬드 뒷이야기</h4>
+                        <span>김철수 학생</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder" style="background-color: #C1E1C1;">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>마당을 나온 암탉 포스터</h4>
+                        <span>이영희 학생</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder" style="background-color: #AEC6CF;">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>시간을 파는 상점 주인공 인터뷰</h4>
+                        <span>박민수 학생</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Section 6: AI Consultant -->
+        <section id="consultant" class="content-section" style="display:none;">
+            <div class="intro-card" style="text-align: left;">
+                <h2>🧙‍♂️ AI 추천사서에게 물어보세요!</h2>
+                <p>어떤 책을 읽어야 할지 고민되나요? 아래 질문에 답하고 <strong>[프롬프트 만들기]</strong> 버튼을 투르면,<br>
+                    인공지능에게 물어볼 수 있는 멋진 질문(프롬프트)을 만들어드려요!</p>
+
+                <div class="input-area" style="background:#E1F5FE; margin-top:20px;">
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label><strong>1. 어떤 주제에 관심이 있나요?</strong> (예: 우주, 공룡, 우정, 모험)</label>
+                        <input type="text" id="interestInput" placeholder="관심 있는 단어를 적어주세요">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label><strong>2. 지금 기분은 어떤가요?</strong></label>
+                        <select id="moodSelect"
+                            style="width:100%; padding:10px; border-radius:10px; border:2px solid #81D4FA;">
+                            <option value="신나는">😆 신나고 재미있는 이야기</option>
+                            <option value="감동적인">🥺 마음이 따뜻해지는 감동적인 이야기</option>
+                            <option value="상상력이 풍부한">🦄 신기하고 상상력이 풍부한 이야기</option>
+                            <option value="지식을 얻는">🧠 똑똑해지는 지식 정보 책</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <label><strong>3. 재미있게 읽었던 책이 있다면?</strong> (선택사항)</label>
+                        <input type="text" id="favBookInput" placeholder="예: 해리포터">
+                    </div>
+
+                    <button onclick="generatePrompt()" class="action-btn" style="background:#039BE5;"><i
+                            class="fa-solid fa-wand-magic-sparkles"></i> 프롬프트 만들기</button>
+                </div>
+
+                <div id="resultArea"
+                    style="display:none; margin-top:20px; background:#ECEFF1; padding:20px; border-radius:15px;">
+                    <h3>✨ 이렇게 물어보세요! (복사해서 AI에게 붙여넣기)</h3>
+                    <textarea id="promptOutput" rows="8"
+                        style="width:100%; padding:10px; border:1px solid #CFD8DC; border-radius:10px; font-family:'Noto Sans KR'; line-height:1.6;"></textarea>
+                    <button onclick="copyPrompt()" class="nav-btn"
+                        style="margin-top:10px; font-size:1rem; border-color:#546E7A; color:#546E7A;"><i
+                            class="fa-solid fa-copy"></i> 복사하기</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 AI 독서 탐험대 | 선생님과 함께 만들어요</p>
+    </footer>
+
+    <!-- Section 7: KDC Recommendation (NEW) -->
+    <section id="kdc_recommend" class="content-section" style="display:none;">
+        <h2>📚 KDC별 사서 선생님 추천 도서</h2>
+        <p>어떤 주제의 책을 읽고 싶나요? 번호를 선택해보세요!</p>
+
+        <div class="kdc-tabs" style="display:flex; gap:10px; margin-bottom:20px; overflow-x:auto; padding-bottom:10px;">
+            <button class="nav-btn" onclick="filterKDC('000')">000 총류</button>
+            <button class="nav-btn" onclick="filterKDC('100')">100 철학</button>
+            <button class="nav-btn" onclick="filterKDC('200')">200 종교</button>
+            <button class="nav-btn" onclick="filterKDC('300')">300 사회</button>
+            <button class="nav-btn" onclick="filterKDC('400')">400 과학</button>
+            <button class="nav-btn" onclick="filterKDC('500')">500 기술</button>
+            <button class="nav-btn" onclick="filterKDC('600')">600 예술</button>
+            <button class="nav-btn" onclick="filterKDC('700')">700 언어</button>
+            <button class="nav-btn" onclick="filterKDC('800')">800 문학</button>
+            <button class="nav-btn" onclick="filterKDC('900')">900 역사</button>
+        </div>
+
+        <!-- NEW: Sub-category Info Panel -->
+        <div id="kdc-info-panel"
+            style="background:#E0F7FA; border-radius:10px; padding:15px; margin-bottom:20px; border-left:5px solid #00BCD4; display:none;">
+            <!-- JS will inject info here -->
+        </div>
+
+        <div id="kdc-book-list" class="book-grid"
+            style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+            <!-- JS will inject content here -->
+            <p style="grid-column: 1/-1; text-align:center; color:#888;">주제 버튼을 클릭해서 추천 도서를 확인해보세요!</p>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Section 8: My Page (NEW) -->
+    <section id="mypage" class="content-section" style="display:none;">
+        <h2>👤 마이페이지</h2>
+        <div class="intro-card" style="max-width:600px; margin:0 auto; text-align:center;">
+            <div style="margin-bottom:20px;">
+                <i class="fa-solid fa-user-astronaut"
+                    style="font-size:4rem; color:#FFA000; background:#FFF8E1; padding:20px; border-radius:50%;"></i>
+            </div>
+            <h3 id="mypageName" style="font-size:1.8rem; margin:10px 0;">로그인이 필요해요</h3>
+            <p id="mypageBadge" style="color:#1E88E5; font-weight:bold; font-size:1.1rem;">-</p>
+
+            <div
+                style="display:flex; justify-content:space-around; background:#F5F5F5; padding:20px; border-radius:15px; margin:30px 0;">
+                <div>
+                    <div style="font-size:0.9rem; color:#777;">읽은 책</div>
+                    <div id="mypageBookCount" style="font-size:1.5rem; font-weight:bold; color:#333;">0 권</div>
+                </div>
+                <div>
+                    <div style="font-size:0.9rem; color:#777;">독서 태도</div>
+                    <div id="mypageAttitude" style="font-size:1.5rem; font-weight:bold; color:#333;">-</div>
+                </div>
+            </div>
+
+            <button onclick="logoutUser()" class="action-btn"
+                style="background:#B0BEC5; width:auto; padding:10px 30px;">로그아웃</button>
+        </div>
+
+        <!-- Book Selection Journal (NEW) -->
+        <div class="intro-card" style="max-width:600px; margin:20px auto; text-align:left;">
+            <h3 style="border-bottom:2px solid #EEE; padding-bottom:10px; margin-top:0;">📚 내가 고른 책 기록하기</h3>
+            <p style="color:#666; font-size:0.9rem;">오늘 내가 직접 고른 책과 그 이유를 남겨보세요.</p>
+
+            <div style="background:#E3F2FD; padding:15px; border-radius:10px; margin-bottom:20px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">책 제목</label>
+                <input type="text" id="selectionTitle" placeholder="책 제목을 입력하세요"
+                    style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px; margin-bottom:10px;">
+
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">선택 이유 (여러 개 선택 가능)</label>
+                <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+                    <label><input type="checkbox" name="selReason" value="표지가 멋져서"> 표지가 멋져서</label>
+                    <label><input type="checkbox" name="selReason" value="제목이 재미있어 보여서"> 제목이 재미있어 보여서</label>
+                    <label><input type="checkbox" name="selReason" value="좋아하는 주제라서"> 좋아하는 주제라서</label>
+                    <label><input type="checkbox" name="selReason" value="친구가 추천해줘서"> 친구가 추천해줘서</label>
+                    <label><input type="checkbox" name="selReason" value="그림이 많아서"> 그림이 많아서</label>
+                </div>
+
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">다짐 한마디</label>
+                <input type="text" id="selectionPromise" placeholder="예: 끝까지 읽어볼 테야!"
+                    style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px; margin-bottom:10px;">
+
+                <button onclick="addSelectionLog()" class="action-btn" style="width:100%; background:#2196F3;">기록 저장하기
+                    ✨</button>
+            </div>
+
+            <h4 style="margin-bottom:10px;">📋 나의 선택 기록</h4>
+            <ul id="selectionLogList" style="list-style:none; padding:0; max-height:300px; overflow-y:auto;">
+                <!-- Logs will appear here -->
+                <li style="text-align:center; color:#999;">아직 기록된 내용이 없어요.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Bookmatch Modal -->
+    <div id="bookmatchModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBookmatch()">&times;</span>
+            <h2 style="color:#FF6F00; margin-top:0;">📚 BOOKMATCH 책 고르기 기준</h2>
+            <p style="text-align:center; margin-bottom:20px;">자신에게 딱 맞는 책을 고르는 9가지 비밀!</p>
+
+            <div class="bookmatch-grid">
+                <div class="bm-item">
+                    <div class="bm-letter">B</div>
+                    <div class="bm-desc"><strong>Book Length</strong><br>책의 분량이 적당한가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">O</div>
+                    <div class="bm-desc"><strong>Ordinary Language</strong><br>내가 이해할 수 있는 말인가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">O</div>
+                    <div class="bm-desc"><strong>Organization</strong><br>책의 구성(글, 그림)이 좋은가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">K</div>
+                    <div class="bm-desc"><strong>Knowledge</strong><br>내가 아는 내용이 있는가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">M</div>
+                    <div class="bm-desc"><strong>Manageable</strong><br>혼자서 읽어낼 수 있는가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">A</div>
+                    <div class="bm-desc"><strong>Appeal</strong><br>제목이나 표지가 흥미로운가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">T</div>
+                    <div class="bm-desc"><strong>Topic</strong><br>관심 있는 주제인가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">C</div>
+                    <div class="bm-desc"><strong>Cover</strong><br>표지가 마음에 드는가?</div>
+                </div>
+                <div class="bm-item">
+                    <div class="bm-letter">H</div>
+                    <div class="bm-desc"><strong>Hook</strong><br>첫 부분이 나를 끌어당기는가?</div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+                <button class="action-btn" onclick="closeBookmatch()">확인했어요! 👌</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Self-Selection Definition Modal (NEW) -->
+    <div id="selfSelectionModal" class="modal">
+        <div class="modal-content" style="max-width:600px; border: 4px solid #8BC34A;">
+            <span class="close-btn" onclick="closeSelfSelectionModal()">&times;</span>
+            <div style="text-align:center;">
+                <i class="fa-solid fa-book-open-reader" style="font-size:3rem; color:#8BC34A; margin-bottom:15px;"></i>
+                <h2 style="color:#33691E; margin-top:0;">자기 선택적 독서란?</h2>
+                <p style="font-size:1.2rem; line-height:1.6; color:#555;">
+                    <strong style="color:#FFA000;">"내가 주인공이 되는 독서!"</strong><br><br>
+                    선생님이나 부모님이 골라주는 책이 아니라,<br>
+                    <strong>내가 읽고 싶은 책</strong>을<br>
+                    <strong>나의 수준과 흥미</strong>에 맞춰<br>
+                    <strong>직접 선택</strong>해서 읽는 것을 말해요.
+                </p>
+                <div style="background:#F1F8E9; padding:15px; border-radius:10px; margin-top:20px;">
+                    <p style="margin:0; font-weight:bold; color:#558B2F;">✨ 장점</p>
+                    <ul style="text-align:left; color:#333; margin:10px 0 0 20px;">
+                        <li>책 읽기가 더 재미있어져요.</li>
+                        <li>끝까지 읽을 수 있는 힘이 생겨요.</li>
+                        <li>나만의 독서 취향을 알게 돼요.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+                <button class="action-btn" onclick="closeSelfSelectionModal()" style="background:#8BC34A;">멋져요! 도전해볼래요
+                    🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reading Attitude Test Modal (NEW) -->
+    <div id="attitudeTestModal" class="modal">
+        <div class="modal-content" style="max-width:700px; border: 4px solid #FFAB91;">
+            <span class="close-btn" onclick="closeAttitudeTestModal()">&times;</span>
+            <div style="text-align:center;">
+                <h2 style="color:#D84315; margin-top:0;">📝 나의 독서 태도 점검하기</h2>
+                <p style="margin-bottom:20px;">나는 책을 어떻게 생각하고 있나요? 솔직하게 체크해보세요!</p>
+            </div>
+
+            <div class="attitude-form">
+                <div class="question-item"
+                    style="margin-bottom:15px; background:#FBE9E7; padding:15px; border-radius:10px;">
+                    <p style="margin:0 0 10px 0; font-weight:bold;">1. 나는 심심할 때 책을 읽는 편이다.</p>
+                    <label><input type="radio" name="q1" value="5"> 매우 그렇다</label>
+                    <label><input type="radio" name="q1" value="4"> 그렇다</label>
+                    <label><input type="radio" name="q1" value="3"> 보통이다</label>
+                    <label><input type="radio" name="q1" value="2"> 아니다</label>
+                    <label><input type="radio" name="q1" value="1"> 전혀 아니다</label>
+                </div>
+                <div class="question-item"
+                    style="margin-bottom:15px; background:#FBE9E7; padding:15px; border-radius:10px;">
+                    <p style="margin:0 0 10px 0; font-weight:bold;">2. 서점이나 도서관에 가는 것을 좋아한다.</p>
+                    <label><input type="radio" name="q2" value="5"> 매우 그렇다</label>
+                    <label><input type="radio" name="q2" value="4"> 그렇다</label>
+                    <label><input type="radio" name="q2" value="3"> 보통이다</label>
+                    <label><input type="radio" name="q2" value="2"> 아니다</label>
+                    <label><input type="radio" name="q2" value="1"> 전혀 아니다</label>
+                </div>
+                <div class="question-item"
+                    style="margin-bottom:15px; background:#FBE9E7; padding:15px; border-radius:10px;">
+                    <p style="margin:0 0 10px 0; font-weight:bold;">3. 책을 읽다가 모르는 내용이 나오면 찾아본다.</p>
+                    <label><input type="radio" name="q3" value="5"> 매우 그렇다</label>
+                    <label><input type="radio" name="q3" value="4"> 그렇다</label>
+                    <label><input type="radio" name="q3" value="3"> 보통이다</label>
+                    <label><input type="radio" name="q3" value="2"> 아니다</label>
+                    <label><input type="radio" name="q3" value="1"> 전혀 아니다</label>
+                </div>
+                <div class="question-item"
+                    style="margin-bottom:15px; background:#FBE9E7; padding:15px; border-radius:10px;">
+                    <p style="margin:0 0 10px 0; font-weight:bold;">4. 친구에게 내가 읽은 책을 추천해주고 싶다.</p>
+                    <label><input type="radio" name="q4" value="5"> 매우 그렇다</label>
+                    <label><input type="radio" name="q4" value="4"> 그렇다</label>
+                    <label><input type="radio" name="q4" value="3"> 보통이다</label>
+                    <label><input type="radio" name="q4" value="2"> 아니다</label>
+                    <label><input type="radio" name="q4" value="1"> 전혀 아니다</label>
+                </div>
+                <div class="question-item"
+                    style="margin-bottom:15px; background:#FBE9E7; padding:15px; border-radius:10px;">
+                    <p style="margin:0 0 10px 0; font-weight:bold;">5. 책 읽는 시간은 즐겁다.</p>
+                    <label><input type="radio" name="q5" value="5"> 매우 그렇다</label>
+                    <label><input type="radio" name="q5" value="4"> 그렇다</label>
+                    <label><input type="radio" name="q5" value="3"> 보통이다</label>
+                    <label><input type="radio" name="q5" value="2"> 아니다</label>
+                    <label><input type="radio" name="q5" value="1"> 전혀 아니다</label>
+                </div>
+            </div>
+
+            <div id="attitudeResult"
+                style="display:none; text-align:center; background:#FFF3E0; padding:20px; border-radius:10px; margin-top:20px; border: 2px dashed #FF6F00;">
+                <h3 style="color:#E65100; margin-top:0;">결과 분석 📊</h3>
+                <p id="attitudeScoreText" style="font-size:1.1rem; font-weight:bold;"></p>
+                <p id="attitudeComment" style="color:#5D4037;"></p>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+                <button class="action-btn" onclick="checkAttitude()" style="background:#FFAB91;">결과 확인하기 🔍</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Modal (NEW) -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content" style="max-width:400px; text-align:center; padding-top:40px;">
+            <h2 style="color:#333;">👋 환영합니다!</h2>
+            <p>이름(닉네임)을 입력해서 시작해보세요.</p>
+            <input type="text" id="loginNameInput" placeholder="예: 독서왕 철수"
+                style="width:80%; padding:15px; font-size:1.1rem; border:2px solid #ddd; border-radius:10px; margin:20px 0;">
+            <button onclick="loginUser()" class="action-btn" style="width:80%;">로그인 / 가입하기</button>
+            <p style="font-size:0.8rem; color:#999; margin-top:20px;">* 아이디는 브라우저에 저장됩니다.</p>
+        </div>
+    </div>
+
+    <!-- Profile Card Modal (NEW) -->
+    <div id="profileCardModal" class="modal">
+        <div class="modal-content" style="max-width:700px; border: 4px solid #7E57C2;">
+            <span class="close-btn" onclick="closeProfileCardModal()">&times;</span>
+            <div style="text-align:center;">
+                <h2 style="color:#673AB7; margin-top:0;">🎨 나만의 독서 성향 카드 만들기</h2>
+                <p>나를 가장 잘 나타내는 독서 스타일을 골라보세요!</p>
+            </div>
+
+            <div class="profile-form" style="margin-top:20px;">
+                <div style="margin-bottom:15px; text-align:left;">
+                    <label style="display:block; font-weight:bold; margin-bottom:5px;">1. 이름 (닉네임)</label>
+                    <input type="text" id="profileName" placeholder="이름을 입력하세요"
+                        style="width:100%; padding:10px; border-radius:5px; border:1px solid #ccc;">
+                </div>
+
+                <div style="margin-bottom:15px; text-align:left;">
+                    <label style="display:block; font-weight:bold; margin-bottom:5px;">2. 좋아하는 장르 (2개 선택)</label>
+                    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                        <label><input type="checkbox" name="genre" value="🕵️‍♂️ 추리/미스터리"> 탐정/추리</label>
+                        <label><input type="checkbox" name="genre" value="🧛‍♂️ 판타지/모험"> 판타지/모험</label>
+                        <label><input type="checkbox" name="genre" value="🦖 과학/공룡"> 과학/자연</label>
+                        <label><input type="checkbox" name="genre" value="📜 역사/인물"> 역사/인물</label>
+                        <label><input type="checkbox" name="genre" value="🤣 만화/유머"> 만화/유머</label>
+                        <label><input type="checkbox" name="genre" value="👪 감동/드라마"> 감동/가족</label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:15px; text-align:left;">
+                    <label style="display:block; font-weight:bold; margin-bottom:5px;">3. 나의 독서 스타일</label>
+                    <div style="display:flex; flex-direction:column; gap:5px;">
+                        <label><input type="radio" name="style" value="🐢 천천히 꼼꼼하게 읽는 '정독파'"> 천천히 꼼꼼하게 읽는 '정독파'</label>
+                        <label><input type="radio" name="style" value="🐆 빠르게 많이 읽는 '다독파'"> 빠르게 많이 읽는 '다독파'</label>
+                        <label><input type="radio" name="style" value="🎨 그림을 자세히 보는 '감상파'"> 그림을 자세히 보는 '감상파'</label>
+                        <label><input type="radio" name="style" value="🔁 좋아하는 책은 또 읽는 '재독파'"> 좋아하는 책은 또 읽는
+                            '재독파'</label>
+                    </div>
+                </div>
+
+                <button class="action-btn" onclick="createProfileCard()" style="background:#673AB7; margin-top:10px;">카드
+                    생성하기 ✨</button>
+            </div>
+
+            <!-- Result Area -->
+            <div id="profileCardResult" style="display:none; margin-top:30px; animation: fadeIn 0.5s;">
+                <div id="finalCard"
+                    style="background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%); padding:30px; border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); text-align:center; position:relative; overflow:hidden;">
+                    <div style="font-size:3rem; margin-bottom:10px;">📚</div>
+                    <h3 id="cardName" style="font-size:2rem; margin:10px 0; color:#333;">000의 독서 카드</h3>
+                    <div style="background:rgba(255,255,255,0.8); padding:15px; border-radius:10px; margin:15px 0;">
+                        <p style="margin:5px 0; color:#555; font-size:0.9rem;">좋아하는 장르</p>
+                        <div id="cardGenres" style="font-size:1.2rem; font-weight:bold; color:#673AB7;">-</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.8); padding:15px; border-radius:10px; margin:15px 0;">
+                        <p style="margin:5px 0; color:#555; font-size:0.9rem;">나의 독서 스타일</p>
+                        <div id="cardStyle" style="font-size:1.2rem; font-weight:bold; color:#009688;">-</div>
+                    </div>
+                    <div style="position:absolute; bottom:10px; right:15px; font-size:0.8rem; color:rgba(0,0,0,0.3);">AI
+                        Reading Program</div>
+                </div>
+                <p style="margin-top:10px; color:#888; font-size:0.9rem;">* 이 화면을 캡처해서 저장하세요!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Ethics Modal (NEW) -->
+    <div id="aiEthicsModal" class="modal">
+        <div class="modal-content" style="max-width:650px; border: 4px solid #FF5722;">
+            <span class="close-btn" onclick="closeAIEthicsModal()">&times;</span>
+            <div style="text-align:center;">
+                <i class="fa-solid fa-robot" style="font-size:3rem; color:#FF5722; margin-bottom:15px;"></i>
+                <h2 style="color:#D84315; margin-top:0;">🤖 AI와 똑똑하게 대화하는 법</h2>
+                <p style="font-size:1.1rem; margin-bottom:20px;">인공지능을 사용할 때 꼭 지켜야 할 약속들이에요!</p>
+            </div>
+
+            <div style="text-align:left; background:#FBE9E7; padding:20px; border-radius:15px;">
+                <div style="margin-bottom:15px; display:flex; align-items:start;">
+                    <span style="font-size:1.5rem; margin-right:10px;">🔒</span>
+                    <div>
+                        <strong style="color:#D84315; font-size:1.1rem;">1. 개인정보는 비밀이에요!</strong>
+                        <p style="margin:5px 0; color:#555;">이름, 전화번호, 학교, 주소 같은 나의 소중한 정보는 절대 AI에게 알려주면 안 돼요.</p>
+                    </div>
+                </div>
+                <div style="margin-bottom:15px; display:flex; align-items:start;">
+                    <span style="font-size:1.5rem; margin-right:10px;">🎀</span>
+                    <div>
+                        <strong style="color:#D84315; font-size:1.1rem;">2. 예쁜 말을 사용해요.</strong>
+                        <p style="margin:5px 0; color:#555;">AI에게도 친구처럼 예의 바르고 고운 말을 써주세요. 나쁜 말은 배우면 안 되니까요!</p>
+                    </div>
+                </div>
+                <div style="margin-bottom:15px; display:flex; align-items:start;">
+                    <span style="font-size:1.5rem; margin-right:10px;">✅</span>
+                    <div>
+                        <strong style="color:#D84315; font-size:1.1rem;">3. 팩트 체크는 필수!</strong>
+                        <p style="margin:5px 0; color:#555;">AI가 하는 말이 항상 정답은 아니에요. 중요한 정보는 꼭 선생님이나 책에서 다시 확인해요.</p>
+                    </div>
+                </div>
+                <div style="margin-bottom:0; display:flex; align-items:start;">
+                    <span style="font-size:1.5rem; margin-right:10px;">📢</span>
+                    <div>
+                        <strong style="color:#D84315; font-size:1.1rem;">4. 솔직하게 말해요.</strong>
+                        <p style="margin:5px 0; color:#555;">AI의 도움을 받아 숙제를 했다면, "AI가 도와줬어요"라고 솔직하게 말하는 것이 멋진 태도예요!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:20px;">
+                <button class="action-btn" onclick="closeAIEthicsModal()" style="background:#FF5722;">네, 약속할게요!
+                    🤙</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Drawing Modal (NEW) -->
+    <div id="drawingModal" class="modal">
+        <div class="modal-content" style="max-width:900px; border: 4px solid #EC407A;">
+            <span class="close-btn" onclick="closeDrawingModal()">&times;</span>
+            <div style="text-align:center; margin-bottom:10px;">
+                <h2 style="color:#D81B60; margin-top:0;">🎨 나만의 창작 아틀리에</h2>
+                <p>책을 읽고 떠오른 생각이나 장면을 자유롭게 그려보세요!</p>
+            </div>
+
+            <div class="drawing-container" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
+                <!-- Tools -->
+                <div class="tools-panel"
+                    style="background:#F8BBD0; padding:15px; border-radius:10px; display:flex; flex-direction:column; gap:15px; min-width:150px;">
+                    <div>
+                        <label style="font-weight:bold; display:block; margin-bottom:5px;">색상 선택</label>
+                        <input type="color" id="colorPicker" value="#000000"
+                            style="width:100%; height:40px; cursor:pointer;">
+                    </div>
+                    <div>
+                        <label style="font-weight:bold; display:block; margin-bottom:5px;">붓 크기: <span
+                                id="brushSizeDisplay">5</span></label>
+                        <input type="range" id="brushSize" min="1" max="50" value="5" style="width:100%;">
+                    </div>
+                    <div style="display:flex; gap:5px;">
+                        <button onclick="setEraser()"
+                            style="flex:1; padding:8px; border:none; border-radius:5px; background:white; cursor:pointer;">🧹
+                            지우개</button>
+                        <button onclick="setBrush()"
+                            style="flex:1; padding:8px; border:none; border-radius:5px; background:#EC407A; color:white; cursor:pointer;">🖌️
+                            붓</button>
+                    </div>
+                    <button onclick="clearCanvas()"
+                        style="padding:10px; border:none; border-radius:5px; background:#ef5350; color:white; cursor:pointer; margin-top:10px;">🗑️
+                        모두 지우기</button>
+                    <button onclick="saveDrawing()"
+                        style="padding:10px; border:none; border-radius:5px; background:#4CAF50; color:white; cursor:pointer; font-weight:bold;">💾
+                        저장하기</button>
+                </div>
+
+                <!-- Canvas -->
+                <div class="canvas-wrapper"
+                    style="border:2px dashed #ccc; border-radius:10px; overflow:hidden; background:white;">
+                    <canvas id="drawingCanvas" width="600" height="450"
+                        style="cursor:crosshair; touch-action: none;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ai_script.js"></script>
+</body>
+
+</html>
